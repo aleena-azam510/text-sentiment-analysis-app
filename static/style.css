@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Review Sentiment Analyzer 🎬</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        /* General Styling */
+/* General Styling */
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f0f2f5 0%, #e0e6ed 100%);
@@ -257,65 +248,3 @@
                 padding: 15px 25px;
             }
         }
-    </style>
-</head>
-<body>
-    <div class="container animate__fadeIn">
-        <h1>Movie Review Sentiment Analyzer 🎬</h1>
-        <p class="tagline">Uncover the emotions hidden in your movie reviews.</p>
-        <form id="sentiment-form" action="/predict" method="post">
-            <textarea name="review" id="review-input" placeholder="Enter your movie review here... e.g., 'This movie was an absolute masterpiece!'" required></textarea><br>
-            <button type="submit" id="predict-button">
-                Predict Sentiment
-                <span class="spinner" id="loading-spinner"></span>
-            </button>
-        </form>
-        <div class="footer">
-            Developed by Aleena Azam
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('sentiment-form');
-    const predictButton = document.getElementById('predict-button');
-    const loadingSpinner = document.getElementById('loading-spinner');
-    const reviewInput = document.getElementById('review-input');
-
-    if (form && predictButton && loadingSpinner && reviewInput) {
-        form.addEventListener('submit', () => {
-            predictButton.disabled = true;
-            predictButton.innerHTML = 'Predicting... <span class="spinner"></span>';
-            const spinner = predictButton.querySelector('.spinner');
-            if (spinner) {
-                spinner.style.display = 'block';
-            }
-        });
-
-        // Optional: Character counter for the textarea
-        const charCountDisplay = document.createElement('div');
-        charCountDisplay.id = 'char-count';
-        charCountDisplay.style.cssText = `
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 10px;
-            text-align: right;
-            padding-right: 10%;
-        `;
-        reviewInput.parentNode.insertBefore(charCountDisplay, reviewInput.nextSibling);
-
-        reviewInput.addEventListener('input', () => {
-            const currentLength = reviewInput.value.length;
-            charCountDisplay.textContent = `${currentLength} characters`;
-            if (currentLength > 500) { // Example limit
-                charCountDisplay.style.color = 'red';
-            } else {
-                charCountDisplay.style.color = '#888';
-            }
-        });
-        reviewInput.dispatchEvent(new Event('input')); // Initialize count on load
-    }
-});
-    </script>
-</body>
-</html>

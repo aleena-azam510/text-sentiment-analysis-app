@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Sentiment Analyzer 🎬</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+<body>
+    <div class="container animate__fadeIn">
+        <h1>Movie Review Sentiment Analyzer 🎬</h1>
+        <p class="tagline">Uncover the emotions hidden in your movie reviews.</p>
+        <form id="sentiment-form" action="/predict" method="post">
+            <textarea name="review" id="review-input" placeholder="Enter your movie review here... e.g., 'This movie was an absolute masterpiece!'" required></textarea><br>
+            <button type="submit" id="predict-button">
+                Predict Sentiment
+                <span class="spinner" id="loading-spinner"></span>
+            </button>
+        </form>
+        <div class="footer">
+            Developed by Aleena Azam
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
