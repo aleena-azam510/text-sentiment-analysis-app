@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Prediction Result ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container animate__fadeIn">
+        <h1>Sentiment Analysis Result ✨</h1>
+        <p class="review-display">Your review: "<span class="original-review">{{ review }}</span>"</p>
+        <div class="sentiment-box {{ 'positive' if sentiment == 'Positive' else 'negative' }} animate__scaleIn">
+            Predicted Sentiment: <span class="sentiment-text">{{ sentiment }}</span>
+        </div>
+        <a href="/" class="back-button animate__bounceIn">Analyze another review</a>
+        <div class="footer">
+            Developed by Aleena Azam
+        </div>
+    </div>
+</body>
+</html>
